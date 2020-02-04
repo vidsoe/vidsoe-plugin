@@ -26,3 +26,11 @@
     });
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    function v_get_option($field_id = ''){
+        return rwmb_meta($field_id, array(
+            'object_type' => 'setting',
+        ), 'vidsoe_plugin');
+    }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
