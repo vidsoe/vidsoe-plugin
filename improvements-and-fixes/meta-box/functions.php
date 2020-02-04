@@ -11,34 +11,28 @@
 		$fields = array();
         $fields[] = array(
             'id' => 'mb_add_bootstrap_to_fields',
-            //'label_description' => '<a href="https://getbootstrap.com/docs/4.4/components/forms/">getbootstrap.com/docs/4.4/components/forms</a>',
-            'name' => 'Add Bootstrap to fields',
+            'name' => 'Add Bootstrap',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
             'id' => 'mb_add_custom_fields',
-            //'label_description' => '<a href="https://getbootstrap.com/docs/4.4/layout/grid/">getbootstrap.com/docs/4.4/layout/grid</a>',
-            //'name' => 'Add custom fields (\'row_open\', \'row_close\', \'col_open\', \'col_close\' and \'raw_html\')',
-            'name' => 'Add custom fields (row_open, col_open, col_close, row_close and raw_html)',
+            'name' => 'Add custom fields',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
             'id' => 'mb_add_floating_labels_to_fields',
-            //'label_description' => '<a href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">getbootstrap.com/docs/4.4/examples/floating-labels</a>',
-            'name' => 'Add floating labels to fields',
+            'name' => 'Add floating labels',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
             'id' => 'mb_use_date_i18n_instead_of_date',
-            //'label_description' => '<a href="https://developer.wordpress.org/reference/functions/date_i18n/">developer.wordpress.org/reference/functions/date_i18n</a>',
-            //'name' => 'Use \'date_i18n\' instead of \'date\' on \'date\' and \'datetime\' fields',
-            'name' => 'Use date_i18n instead of date on date and datetime fields',
+            'name' => 'Use date_i18n',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
