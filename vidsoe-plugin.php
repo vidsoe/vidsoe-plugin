@@ -10,7 +10,7 @@
  * Plugin Name: Vidsoe Plugin
  * Plugin URI: https://vidsoe.com
  * Text Domain: vidsoe-plugin
- * Version: 2020.2.4.2
+ * Version: 2020.2.4.3
  *
  */ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
