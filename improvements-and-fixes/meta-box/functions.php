@@ -11,25 +11,32 @@
 		$fields = array();
         $fields[] = array(
             'id' => 'mb_add_bootstrap_to_fields',
+            'label_description' => '<a href="https://getbootstrap.com/docs/4.4/components/forms/">getbootstrap.com/docs/4.4/components/forms</a>',
             'name' => 'Add Bootstrap to fields',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
+            'std' => 1,
+            'type' => 'switch',
+        );
+        $fields[] = array(
+            'id' => 'mb_add_floating_labels_to_fields',
+            'label_description' => '<a href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">getbootstrap.com/docs/4.4/examples/floating-labels</a>',
+            'name' => 'Add floating labels to fields',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
             'id' => 'mb_add_custom_fields',
             'name' => 'Add \'row_open\', \'row_close\', \'col_open\', \'col_close\' and \'raw_html\' custom fields',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
             'id' => 'mb_use_date_i18n_instead_of_date',
+            'label_description' => '<a href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">getbootstrap.com/docs/4.4/examples/floating-labels</a>',
             'name' => 'Use \'date_i18n\' instead of \'date\' on \'date\' and \'datetime\' fields',
-            'std' => 1,
-            'type' => 'switch',
-        );
-        $fields[] = array(
-            'id' => 'mb_use_floating_labels_to_fields',
-            'name' => 'Use floating labels to fields',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
@@ -39,6 +46,7 @@
 			'settings_pages' => 'vidsoe-plugin',
 			'tab' => $id,
 			'title' => 'Improvements and Fixes for Meta Box',
+            'label_description' => '<a href="https://developer.wordpress.org/reference/functions/date_i18n/">developer.wordpress.org/reference/functions/date_i18n</a>',
 		);
 		return $meta_boxes;
 	});
@@ -108,6 +116,87 @@
             return v_mb_format_value($field, $value, $args, $object_id);
         }
         return $value;
+    }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    if(v_get_option('mb_add_custom_fields')){
+        if(class_exists('RWMB_Field')){
+            class RWMB_Row_Open_Field extends RWMB_Field {
+                public static function html($meta, $field){
+                    return '';
+                }
+            }
+        	class RWMB_Row_Close_Field extends RWMB_Field {
+                public static function html($meta, $field){
+                    return '';
+                }
+            }
+        	class RWMB_Col_Open_Field extends RWMB_Field {
+                public static function html($meta, $field){
+                    return '';
+                }
+            }
+        	class RWMB_Col_Close_Field extends RWMB_Field {
+                public static function html($meta, $field){
+                    return '';
+                }
+            }
+        	class RWMB_Raw_Html_Field extends RWMB_Field {
+                public static function html($meta, $field){
+                    return '';
+                }
+            }
+            add_filter('rwmb_row_open_outer_html', function($outer_html){
+            	 if(is_admin()){
+            		return '';
+            	}
+            	return '<div class="form-row">';
+            }, 20);
+            add_filter('rwmb_row_close_outer_html', function($outer_html){
+            	 if(is_admin()){
+            		return '';
+            	}
+            	return '</div>';
+            }, 20);
+            add_filter('rwmb_col_open_outer_html', function($outer_html, $field){
+            	if(is_admin()){
+            		return '';
+            	}
+            	$classes = array();
+            	foreach(array('col', 'col-sm', 'col-md', 'col-lg', 'col-xl', 'offset', 'offset-sm', 'offset-md', 'offset-lg', 'offset-xl') as $class){
+            		if(isset($field[$class])){
+            			if(is_numeric($field[$class])){
+            				if(intval($field[$class]) >= 1 and intval($field[$class]) <= 12){
+            					$classes[] = $class . '-' . $field[$class];
+            				}
+            			}
+            		}
+            	}
+            	if(!$classes){
+            		$classes[] = 'col';
+            	}
+            	return '<div class="' . implode(' ', $classes) . '">';
+            }, 20, 2);
+            add_filter('rwmb_col_close_outer_html', function($outer_html){
+            	 if(is_admin()){
+            		return '';
+            	}
+            	return '</div>';
+            }, 20);
+            add_filter('rwmb_raw_html_outer_html', function($outer_html, $field){
+            	 if(is_admin()){
+            		return '';
+            	}
+            	if(!empty($field['hide_on_mobile']) and wp_is_mobile()){
+            		return '';
+            	}
+            	if(!isset($field['std'])){
+            		$field['std'] = '';
+            	}
+            	return $field['std'];
+            }, 20, 2);
+        }
     }
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
