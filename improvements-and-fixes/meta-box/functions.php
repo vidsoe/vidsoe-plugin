@@ -11,31 +11,34 @@
 		$fields = array();
         $fields[] = array(
             'id' => 'mb_add_bootstrap_to_fields',
-            'label_description' => '<a href="https://getbootstrap.com/docs/4.4/components/forms/">getbootstrap.com/docs/4.4/components/forms</a>',
+            //'label_description' => '<a href="https://getbootstrap.com/docs/4.4/components/forms/">getbootstrap.com/docs/4.4/components/forms</a>',
             'name' => 'Add Bootstrap to fields',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
+            'id' => 'mb_add_custom_fields',
+            //'label_description' => '<a href="https://getbootstrap.com/docs/4.4/layout/grid/">getbootstrap.com/docs/4.4/layout/grid</a>',
+            //'name' => 'Add custom fields (\'row_open\', \'row_close\', \'col_open\', \'col_close\' and \'raw_html\')',
+            'name' => 'Add custom fields (row_open, col_open, col_close, row_close and raw_html)',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
+            'std' => 1,
+            'type' => 'switch',
+        );
+        $fields[] = array(
             'id' => 'mb_add_floating_labels_to_fields',
-            'label_description' => '<a href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">getbootstrap.com/docs/4.4/examples/floating-labels</a>',
+            //'label_description' => '<a href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">getbootstrap.com/docs/4.4/examples/floating-labels</a>',
             'name' => 'Add floating labels to fields',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'mb_add_custom_fields',
-            'name' => 'Add \'row_open\', \'row_close\', \'col_open\', \'col_close\' and \'raw_html\' custom fields',
-            'on_label' => '<i class="dashicons dashicons-yes"></i>',
-            'std' => 1,
-            'type' => 'switch',
-        );
-        $fields[] = array(
             'id' => 'mb_use_date_i18n_instead_of_date',
-            'label_description' => '<a href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">getbootstrap.com/docs/4.4/examples/floating-labels</a>',
-            'name' => 'Use \'date_i18n\' instead of \'date\' on \'date\' and \'datetime\' fields',
+            //'label_description' => '<a href="https://developer.wordpress.org/reference/functions/date_i18n/">developer.wordpress.org/reference/functions/date_i18n</a>',
+            //'name' => 'Use \'date_i18n\' instead of \'date\' on \'date\' and \'datetime\' fields',
+            'name' => 'Use date_i18n instead of date on date and datetime fields',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
@@ -46,7 +49,6 @@
 			'settings_pages' => 'vidsoe-plugin',
 			'tab' => $id,
 			'title' => 'Improvements and Fixes for Meta Box',
-            'label_description' => '<a href="https://developer.wordpress.org/reference/functions/date_i18n/">developer.wordpress.org/reference/functions/date_i18n</a>',
 		);
 		return $meta_boxes;
 	});
@@ -147,12 +149,16 @@
                     return '';
                 }
             }
-            add_filter('rwmb_row_open_outer_html', function($outer_html){
+            add_filter('rwmb_row_open_outer_html', function($outer_html, $field){
             	 if(is_admin()){
             		return '';
             	}
-            	return '<div class="form-row">';
-            }, 20);
+                $classes = 'form-row';
+                if(!empty($field['class'])){
+            		$classes .= ' ' . $field['class'];
+            	}
+            	return '<div class="' . $classes . '">';
+            }, 20, 2);
             add_filter('rwmb_row_close_outer_html', function($outer_html){
             	 if(is_admin()){
             		return '';
@@ -176,7 +182,11 @@
             	if(!$classes){
             		$classes[] = 'col';
             	}
-            	return '<div class="' . implode(' ', $classes) . '">';
+                $classes = implode(' ', $classes);
+                if(!empty($field['class'])){
+            		$classes .= ' ' . $field['class'];
+            	}
+            	return '<div class="' . $classes . '">';
             }, 20, 2);
             add_filter('rwmb_col_close_outer_html', function($outer_html){
             	 if(is_admin()){
