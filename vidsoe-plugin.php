@@ -10,7 +10,7 @@
  * Plugin Name: Vidsoe Plugin
  * Plugin URI: https://vidsoe.com
  * Text Domain: vidsoe-plugin
- * Version: 2020.2.4.1
+ * Version: 2020.2.4.2
  *
  */ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -23,10 +23,12 @@
             add_action('admin_notices', function(){
 				printf('<div class="notice notice-error"><p><strong>Vidsoe Plugin</strong> already exists.</p></div>');
 			});
-			deactivate_plugins(plugin_basename(__FILE__));
 		} else {
 			define('Vidsoe_Plugin', __FILE__);
+			require_once(plugin_dir_path(Vidsoe_Plugin) . 'includes/plugin-update-checker-4.8.1/plugin-update-checker.php');
+			Puc_v4_Factory::buildUpdateChecker('https://github.com/vidsoe/vidsoe-plugin', Vidsoe_Plugin, 'vidsoe-plugin');
 			$missing_plugins = array();
+			require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 	    	if(!is_plugin_active('meta-box/meta-box.php')){
 	    		$missing_plugins['meta-box'] = 'Meta Box';
 	    	}
@@ -54,10 +56,7 @@
 		    		$required .= $last;
 		    		printf('<div class="notice notice-error"><p>' . esc_html('%1$s requires %2$s.') . '</p></div>', '<strong>Vidsoe Plugin</strong>', $required);
 				});
-				deactivate_plugins(plugin_basename(Vidsoe_Plugin));
 	    	} else {
-				require_once(plugin_dir_path(Vidsoe_Plugin) . 'includes/plugin-update-checker-4.8.1/plugin-update-checker.php');
-			    Puc_v4_Factory::buildUpdateChecker('https://github.com/vidsoe/vidsoe-plugin', Vidsoe_Plugin, 'vidsoe-plugin');
 				require_once(plugin_dir_path(Vidsoe_Plugin) . 'functions.php');
 				foreach(glob(plugin_dir_path(Vidsoe_Plugin) . 'improvements-and-fixes/*', GLOB_ONLYDIR) as $dir){
 					$file = $dir . '/functions.php';

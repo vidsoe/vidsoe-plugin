@@ -6,6 +6,28 @@
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    add_action('admin_head', function(){
+        $current_screen = get_current_screen();
+        if($current_screen->id == 'toplevel_page_vidsoe-plugin'){ ?>
+            <style>
+        		.rwmb-label,
+        		.rwmb-label ~ .rwmb-input {
+        			display: block;
+        			width: 100%;
+        			padding: 0;
+        		}
+        		.rwmb-label {
+        			margin-bottom: 6px;
+        		}
+        		.rwmb-settings-no-boxes .rwmb-field {
+        			padding-top: 0;
+        		}
+        	</style><?php
+        }
+    });
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     add_filter('mb_settings_pages', function($settings_pages){
         $tabs = apply_filters('vidsoe_plugin_tabs', array());
         if($tabs){

@@ -12,10 +12,7 @@
         $fields[] = array(
             'id' => 'mb_use_date_i18n_instead_of_date',
             'name' => 'Use date_i18n() instead of date() on \'date\' and \'datetime\' fields?',
-            'off_label' => 'No',
-            'on_label' => 'Yes',
             'std' => 1,
-            'style' => 'square',
             'type' => 'switch',
         );
 		$meta_boxes[] = array(
