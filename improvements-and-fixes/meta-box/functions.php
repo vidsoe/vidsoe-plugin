@@ -10,14 +10,26 @@
 		$id = basename(dirname(__FILE__));
 		$fields = array();
         $fields[] = array(
-            'id' => 'mb_use_date_i18n_instead_of_date',
-            'name' => 'Use \'date_i18n\' instead of \'date\' on \'date\' and \'datetime\' fields',
+            'id' => 'mb_add_bootstrap_to_fields',
+            'name' => 'Add Bootstrap to fields',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
             'id' => 'mb_add_custom_fields',
             'name' => 'Add \'row_open\', \'row_close\', \'col_open\', \'col_close\' and \'raw_html\' custom fields',
+            'std' => 1,
+            'type' => 'switch',
+        );
+        $fields[] = array(
+            'id' => 'mb_use_date_i18n_instead_of_date',
+            'name' => 'Use \'date_i18n\' instead of \'date\' on \'date\' and \'datetime\' fields',
+            'std' => 1,
+            'type' => 'switch',
+        );
+        $fields[] = array(
+            'id' => 'mb_use_floating_labels_to_fields',
+            'name' => 'Use floating labels to fields',
             'std' => 1,
             'type' => 'switch',
         );
