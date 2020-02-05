@@ -37,7 +37,7 @@
                 'id' => 'vidsoe-plugin',
                 'menu_title' => 'Vidsoe',
                 'option_name' => 'vidsoe_plugin',
-        		'page_title' => 'Improvements and fixes for WordPress core and more',
+        		'page_title' => 'Vidsoe Plugin Settings',
                 'style' => 'no-boxes',
         		'submenu_title' => 'Dashboard',
                 'tab_style' => 'left',

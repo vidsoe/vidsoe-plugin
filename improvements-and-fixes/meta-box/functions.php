@@ -24,15 +24,15 @@
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'mb_add_floating_labels_to_fields',
-            'name' => 'Add floating labels',
+            'id' => 'mb_use_date_i18n_instead_of_date',
+            'name' => 'Use date_i18n',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'mb_use_date_i18n_instead_of_date',
-            'name' => 'Use date_i18n',
+            'id' => 'mb_use_floating_labels_to_fields',
+            'name' => 'Use floating labels',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
