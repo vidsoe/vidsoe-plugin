@@ -31,12 +31,13 @@
     add_filter('rwmb_meta_boxes', function($meta_boxes){
 		$id = basename(dirname(__FILE__));
 		$fields = array();
-        $fields[] = array(
-            'id' => 'bb_bootstrap_4_reboot',
-            'name' => 'Bootstrap 4 reboot',
-            'on_label' => '<i class="dashicons dashicons-yes"></i>',
-            'std' => 1,
-            'type' => 'switch',
+		$fields[] = array(
+            'attributes' => array(
+                'id' => 'bb-reboot',
+            ),
+            'name' => '',
+            'std' => 'Reboot',
+            'type' => 'button',
         );
         $fields[] = array(
             'id' => 'bb_disable_inline_editing',
@@ -52,13 +53,12 @@
             'std' => 1,
             'type' => 'switch',
         );
-        $fields[] = array(
-            'attributes' => array(
-                'id' => 'bb-reboot',
-            ),
-            'name' => '',
-            'std' => 'Bootstrap 4 reboot',
-            'type' => 'button',
+		$fields[] = array(
+            'id' => 'bb_fix_styles',
+            'name' => 'Fix styles',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
+            'std' => 1,
+            'type' => 'switch',
         );
 		$meta_boxes[] = array(
 			'fields' => $fields,

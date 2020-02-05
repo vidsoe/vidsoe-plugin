@@ -10,7 +10,7 @@
  * Plugin Name: Vidsoe Plugin
  * Plugin URI: https://vidsoe.com
  * Text Domain: vidsoe-plugin
- * Version: 2020.2.4.13
+ * Version: 2020.2.4.14
  *
  */ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -25,7 +25,7 @@
 			});
 		} else {
 			define('Vidsoe_Plugin', __FILE__);
-			define('Vidsoe_Plugin_Version', '2020.2.4.13');
+			define('Vidsoe_Plugin_Version', '2020.2.4.14');
 			require_once(plugin_dir_path(Vidsoe_Plugin) . 'includes/plugin-update-checker-4.8.1/plugin-update-checker.php');
 			Puc_v4_Factory::buildUpdateChecker('https://github.com/vidsoe/vidsoe-plugin', Vidsoe_Plugin, 'vidsoe-plugin');
 			$missing_plugins = array();

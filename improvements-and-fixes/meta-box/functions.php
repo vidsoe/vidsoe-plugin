@@ -10,8 +10,8 @@
 		$id = basename(dirname(__FILE__));
 		$fields = array();
         $fields[] = array(
-            'id' => 'mb_add_bootstrap_4_to_fields',
-            'name' => 'Add Bootstrap 4',
+            'id' => 'mb_add_bootstrap',
+            'name' => 'Add Bootstrap',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
@@ -24,28 +24,28 @@
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'mb_use_fix_conditional_logic',
+            'id' => 'mb_fix_conditional_logic',
             'name' => 'Fix conditional logic',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'mb_use_fix_validation',
+            'id' => 'mb_fix_validation',
             'name' => 'Fix validation',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'mb_use_date_i18n_instead_of_date',
+            'id' => 'mb_use_date_i18n',
             'name' => 'Use date_i18n',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'mb_use_floating_labels_to_fields',
+            'id' => 'mb_use_floating_labels',
             'name' => 'Use floating labels',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
@@ -71,7 +71,7 @@
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    if(v_get_option('mb_use_date_i18n_instead_of_date')){
+    if(v_get_option('mb_use_date_i18n')){
         add_filter('rwmb_the_value', 'v_mb_the_value', 20, 4);
     }
 
