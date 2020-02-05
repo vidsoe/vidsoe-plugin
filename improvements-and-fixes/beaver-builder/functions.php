@@ -14,11 +14,11 @@
                     $('#bb-reboot').on('click', function(){
                         var confirmation = confirm('Are you sure?');
                         if(confirmation){
-                            $.post('<?php echo rest_url('vp/v1/bb/', {
+                            $.post('<?php echo rest_url('vp/v1/bb/'); ?>', {
                                 reboot: true
                             }, function(data){
-                                alert('Bootstrap Rebooted!');
-                            }); ?>');
+                                alert('Rebooted!');
+                            });
                         }
                     });
                 });
@@ -47,7 +47,7 @@
         );
         $fields[] = array(
             'id' => 'bb_reboot_buttons_and_forms',
-            'name' => 'Reboot buttons and forms',
+            'name' => 'Reboot button and form styles',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
@@ -57,7 +57,7 @@
                 'id' => 'bb-reboot',
             ),
             'name' => '',
-            'std' => 'Bootstrap Reboot',
+            'std' => 'Reboot',
             'type' => 'button',
         );
 		$meta_boxes[] = array(
