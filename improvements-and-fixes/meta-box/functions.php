@@ -21,10 +21,6 @@
             'name' => 'Add custom fields',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
-            'tooltip' => array(
-                'content' => 'Adds row_open, col_open, col_close, row_close and raw_html fields',
-                'position' => 'right',
-            ),
             'type' => 'switch',
         );
         $fields[] = array(

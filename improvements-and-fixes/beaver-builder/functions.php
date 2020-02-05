@@ -6,6 +6,28 @@
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    add_action('admin_footer', function(){
+        $current_screen = get_current_screen();
+        if($current_screen->id == 'toplevel_page_vidsoe-plugin'){ ?>
+            <script>
+                jQuery(function($){
+                    $('#bb-reboot').on('click', function(){
+                        var confirmation = confirm('Are you sure?');
+                        if(confirmation){
+                            $.post('<?php echo rest_url('vp/v1/bb/', {
+                                reboot: true
+                            }, function(data){
+                                alert('Bootstrap Rebooted!');
+                            }); ?>');
+                        }
+                    });
+                });
+        	</script><?php
+        }
+    });
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     add_filter('rwmb_meta_boxes', function($meta_boxes){
 		$id = basename(dirname(__FILE__));
 		$fields = array();
@@ -21,10 +43,13 @@
             'name' => 'Fix in_the_loop',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
-            'tooltip' => array(
-                'content' => 'Useful when using default:post_meta attribute on Contact Form 7 fields',
-                'position' => 'right',
-            ),
+            'type' => 'switch',
+        );
+        $fields[] = array(
+            'id' => 'bb_reboot_buttons_and_forms',
+            'name' => 'Reboot buttons and forms',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
+            'std' => 1,
             'type' => 'switch',
         );
         $fields[] = array(
@@ -32,7 +57,7 @@
                 'id' => 'bb-reboot',
             ),
             'name' => '',
-            'std' => 'Reboot',
+            'std' => 'Bootstrap Reboot',
             'type' => 'button',
         );
 		$meta_boxes[] = array(
