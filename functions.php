@@ -10,7 +10,10 @@
         $current_screen = get_current_screen();
         if($current_screen->id == 'toplevel_page_vidsoe-plugin'){ ?>
             <style>
-        		.rwmb-label,
+                .rwmb-label > label {
+        			padding-right: 12px;
+        		}
+        		/*.rwmb-label,
         		.rwmb-label ~ .rwmb-input {
         			display: block;
         			width: 100%;
@@ -21,7 +24,7 @@
         		}
         		.rwmb-settings-no-boxes .rwmb-field {
         			padding-top: 0;
-        		}
+        		}*/
         	</style><?php
         }
     });

@@ -32,6 +32,13 @@
 		$id = basename(dirname(__FILE__));
 		$fields = array();
         $fields[] = array(
+            'id' => 'bb_bootstrap_4_reboot',
+            'name' => 'Bootstrap 4 reboot',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
+            'std' => 1,
+            'type' => 'switch',
+        );
+        $fields[] = array(
             'id' => 'bb_disable_inline_editing',
             'name' => 'Disable inline editing',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
@@ -46,18 +53,11 @@
             'type' => 'switch',
         );
         $fields[] = array(
-            'id' => 'bb_reboot_buttons_and_forms',
-            'name' => 'Reboot button and form styles',
-            'on_label' => '<i class="dashicons dashicons-yes"></i>',
-            'std' => 1,
-            'type' => 'switch',
-        );
-        $fields[] = array(
             'attributes' => array(
                 'id' => 'bb-reboot',
             ),
             'name' => '',
-            'std' => 'Reboot',
+            'std' => 'Bootstrap 4 reboot',
             'type' => 'button',
         );
 		$meta_boxes[] = array(

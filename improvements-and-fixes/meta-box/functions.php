@@ -10,8 +10,8 @@
 		$id = basename(dirname(__FILE__));
 		$fields = array();
         $fields[] = array(
-            'id' => 'mb_add_bootstrap_to_fields',
-            'name' => 'Add Bootstrap',
+            'id' => 'mb_add_bootstrap_4_to_fields',
+            'name' => 'Add Bootstrap 4',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
