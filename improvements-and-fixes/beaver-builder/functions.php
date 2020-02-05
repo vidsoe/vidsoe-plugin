@@ -31,17 +31,16 @@
     add_filter('rwmb_meta_boxes', function($meta_boxes){
 		$id = basename(dirname(__FILE__));
 		$fields = array();
-		$fields[] = array(
-            'attributes' => array(
-                'id' => 'bb-reboot',
-            ),
-            'name' => '',
-            'std' => 'Reboot',
-            'type' => 'button',
-        );
         $fields[] = array(
             'id' => 'bb_disable_inline_editing',
             'name' => 'Disable inline editing',
+            'on_label' => '<i class="dashicons dashicons-yes"></i>',
+            'std' => 1,
+            'type' => 'switch',
+        );
+        $fields[] = array(
+            'id' => 'bb_fix_button_and_form_styles',
+            'name' => 'Fix button and form styles',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
@@ -53,12 +52,20 @@
             'std' => 1,
             'type' => 'switch',
         );
-		$fields[] = array(
-            'id' => 'bb_fix_styles',
-            'name' => 'Fix styles',
+        $fields[] = array(
+            'id' => 'bb_improve_posts_module',
+            'name' => 'Improve Posts module',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
             'type' => 'switch',
+        );
+        $fields[] = array(
+            'attributes' => array(
+                'id' => 'bb-reboot',
+            ),
+            'name' => '',
+            'std' => 'Reboot',
+            'type' => 'button',
         );
 		$meta_boxes[] = array(
 			'fields' => $fields,
