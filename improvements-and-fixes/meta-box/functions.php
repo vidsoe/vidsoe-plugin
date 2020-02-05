@@ -21,6 +21,10 @@
             'name' => 'Add custom fields',
             'on_label' => '<i class="dashicons dashicons-yes"></i>',
             'std' => 1,
+            'tooltip' => array(
+                'content' => 'Adds row_open, col_open, col_close, row_close and raw_html fields',
+                'position' => 'right',
+            ),
             'type' => 'switch',
         );
         $fields[] = array(
@@ -64,7 +68,8 @@
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     add_filter('vidsoe_plugin_tabs', function($tabs){
-		$tabs['meta-box'] = 'Meta Box';
+        $id = basename(dirname(__FILE__));
+		$tabs[$id] = 'Meta Box';
 		return $tabs;
 	});
 
